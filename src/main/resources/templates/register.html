@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- HTMLタグの開始。lang="ja"はページの言語が日本語であることを示す。xmlns:thはThymeleafのネームスペースを定義 -->
+ <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+    <!-- headセクションの開始。th:replace="~{layout :: head(ユーザ登録)}"はThymeleafを使用してlayout.htmlのheadフラグメントを挿入 -->
+ <head th:replace="~{layout :: head(ユーザ登録)}"></head>
+ <body>
+    <!-- headerセクションの挿入。th:replace="~{layout :: header}"はThymeleafを使用してlayout.htmlのheaderフラグメントを挿入 -->
+    <div th:replace="~{layout :: header}"></div>
+    <!-- ユーザ登録のタイトルを表示 -->
+    <h3>ユーザ登録</h3>
+
+    <!-- ユーザ登録フォームの開始。th:action="@{/register}"は登録処理のURLを指定。th:object="${userForm}"はフォームのバインディング対象を指定 -->
+    <form th:action="@{/register}" th:object="${userForm}" method="post">
+        <div>
+            <!-- ユーザ名の入力フィールド。th:field="*{username}"はフォームのバインディングを指定 -->
+            <label for="username">ユーザ名：</label>
+            <input type="text" id="username" name="username" th:field="*{username}">
+        </div>
+        <!-- パスワードの入力フィールド。th:field="*{password}"はフォームのバインディングを指定 -->
+        <div>
+            <label for="password">パスワード：</label>
+            <input type="password" id="password" name="password" th:field="*{password}">
+        </div>
+        <!-- 登録ボタン -->
+        <button type="submit">登録</button>
+    </form>
+    <!-- footerセクションの挿入。th:replace="~{layout :: footer}"はThymeleafを使用してlayout.htmlのfooterフラグメントを挿入 -->
+    <div th:replace="~{layout :: footer}"></div>
+ </body>
+ </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- HTMLタグの開始。lang="ja"はページの言語が日本語であることを示す。xmlns:thとxmlns:secはThymeleafとSpring Securityのネームスペースを定義 -->
+ <html lang="ja" xmlns:th="http://www.thymeleaf.org"xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"></html>>
+ <!-- headセクションの開始。th:fragment="head(title)"はThymeleafのフラグメントを定義しており、title変数を受け取る -->
+ <head th:fragment="head(title)">
+   <meta charset="UTF-8">
+   <title th:text="${title}">Title</title>
+ </head>
+ <body>
+  <!-- headerセクションの開始。th:fragment="header"はThymeleafのフラグメントを定義 -->
+ <div th:fragment="header">
+  <!-- ヘッダーの背景色を設定 -->
+   <header style="background-color: #e6e6fa;">
+    <!-- アプリケーションの名前を表示 -->
+       <h4>楽曲管理アプリ</h4>
+       <!-- リストの開始 -->
+          <ul>
+            <!-- 認証済みのユーザーにのみ「アルバム一覧」リンクを表示 -->
+           <li sec:authorize="isAuthenticated()"><a th:href="@{/albums}">アルバム一覧</a></li>
+            <!-- 認証済みのユーザーにのみ「アルバム登録」リンクを表示 -->
+           <li sec:authorize="isAuthenticated()"><a th:href="@{/albums/new}">アルバム登録</a></li>
+             <!-- 匿名ユーザーにのみ「ユーザ登録」リンクを表示 -->
+            <li sec:authorize="isAnonymous()"><a th:href="@{/register}">ユーザ登録</a></li>
+            <!-- 認証済みのユーザーにのみログアウトボタンを表示 -->
+            <li sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit">ログアウト</button>
+                </form>
+            </li>
+          </ul>
+   </header>
+ </div>
+ <!-- footerセクションの開始。th:fragment="footer"はThymeleafのフラグメントを定義 -->
+ <div th:fragment="footer">
+  <!-- フッターの背景色とテキストの配置を設定 -->
+   <footer style="background-color: #e6e6fa; text-align: center;">
+    <!-- フッターに著作権表示を追加 -->
+       <p>&copy; 楽曲管理アプリ</p>
+   </footer>
+ </div>
+ </body>
+ </html>
