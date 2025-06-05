@@ -6,7 +6,7 @@ package com.example.music_management.service;
  import org.springframework.stereotype.Service;
  import com.example.music_management.form.AlbumForm;
  import com.example.music_management.viewmodel.AlbumViewModel;
-//Listをインポート
+//Listをインポートする
  import java.util.List;
 
  //このアノテーションは、このクラスがSpringのサービス Bean として機能することを示します
