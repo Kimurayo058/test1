@@ -7,6 +7,7 @@ package com.example.music_management.controller;
 //ログインコントローラークラスを定義、loginメソッドは、loginビューを返します、ユーザーが/loginパスにアクセスした際にログインページを表示する
 @Controller
 public class LoginController {
+
      @GetMapping("/login")
     public String login() {
         return "login";
