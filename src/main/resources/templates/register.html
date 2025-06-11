@@ -17,19 +17,26 @@
 
     <!-- ユーザ登録フォームの開始。th:action="@{/register}"は登録処理のURLを指定。th:object="${userForm}"はフォームのバインディング対象を指定 -->
     <form th:action="@{/register}" th:object="${userForm}" method="post">
-        <div>
+         
             <!-- ユーザ名の入力フィールド。th:field="*{username}"はフォームのバインディングを指定 -->
-            <label for="username">ユーザ名：</label>
-            <input type="text" id="username" name="username" th:field="*{username}">
+        <div class="form-floating mb-3">
+
+            <input type="text" class="form-control" id="username" name="username" placeholder="ユーザ名">
+             <label for="username">ユーザ名</label>
         </div>
         <!-- パスワードの入力フィールド。th:field="*{password}"はフォームのバインディングを指定 -->
-        <div>
-            <label for="password">パスワード：</label>
-            <input type="password" id="password" name="password" th:field="*{password}">
+        <div class="form-floating mb-3">
+
+            <input type="password" class="form-control" id="password" name="password" placeholder="パスワード">
+            <label for="password">パスワード</label>
         </div>
         <!-- 登録ボタン -->
-        <button type="submit">登録</button>
+        <button type="submit" class="btn btn-success">登録</button>
     </form>
+        <!-- ログイン画面に戻るボタン -->
+        <div class="mt-3">
+            <a href="/login" class="btn btn-primary">ログイン画面に戻る</a>
+        </div>
     <!-- footerセクションの挿入。th:replace="~{layout :: footer}"はThymeleafを使用してlayout.htmlのfooterフラグメントを挿入 -->
     <div th:replace="~{layout :: footer}"></div>
  </body>
